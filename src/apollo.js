@@ -10,17 +10,17 @@ const httpLink = createHttpLink({ uri: `${constants.SERVER_IP}/graphql` });
 
 const middlewareLink = setContext(() => ({
   headers: {
-    Authorization: localStorage.getItem('token')
+    'x-token': localStorage.getItem('token')
   }
 }));
 
 const afterwareLink = new ApolloLink((operation, forward) => {
   const { headers } = operation.getContext();
   if (headers) {
-    const token = headers.get('Authorization');
+    const token = headers.get('x-token');
 
     if (token) {
-      localStorage.setItem('token', `Bearer ${token}`);
+      localStorage.setItem('token', token);
     }
   }
 

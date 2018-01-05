@@ -31,7 +31,7 @@ const Navbar = () => (
           <Button as={Link} to="/login" inverted>
             Log in
           </Button>
-          <Button as={Link} to="/signup" inverted style={{ marginLeft: '0.5em' }}>
+          <Button as={Link} to="/sign-up" inverted style={{ marginLeft: '0.5em' }}>
             Sign Up
           </Button>
         </Menu.Item>

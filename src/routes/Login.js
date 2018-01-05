@@ -28,8 +28,8 @@ class Login extends React.Component {
 
     const { success, token } = response.data.login;
     if (success) {
-      localStorage.setItem('token', `Bearer ${token}`);
-      this.props.history.push('/');
+      localStorage.setItem('token', token);
+      this.props.history.push('/view');
     } else {
       this.success = false;
       this.props.history.push('/login');
@@ -101,7 +101,7 @@ class Login extends React.Component {
               <Message error header="There was some errors with your submission" />
             ) : null}
             <Message>
-              Don't have an account?
+              Don't have an account?{' '}
               <Link as={Link} to="/sign-up">
                 Sign Up
               </Link>

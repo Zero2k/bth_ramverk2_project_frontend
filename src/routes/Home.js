@@ -37,7 +37,7 @@ const Home = () => (
           style={{ fontSize: '1.7em', fontWeight: 'normal', paddingBottom: '20px' }}
         />
         <Button.Group size="large">
-          <Button as={Link} to="/signup" color="violet">
+          <Button as={Link} to="/sign-up" color="violet">
             Join Now
           </Button>
           <Button.Or />
