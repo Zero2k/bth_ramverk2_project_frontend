@@ -29,7 +29,7 @@ class Login extends React.Component {
     const { success, token } = response.data.login;
     if (success) {
       localStorage.setItem('token', token);
-      this.props.history.push('/view');
+      this.props.history.push('/view/bitcoin');
     } else {
       this.success = false;
       this.props.history.push('/login');

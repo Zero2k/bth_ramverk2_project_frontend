@@ -32,7 +32,7 @@ export default () => (
   <Router>
     <Switch>
       {/* <PrivateRoute path="/view" exact component={SelectCoin} /> */}
-      <PrivateRoute path="/view/:coinName" component={View} />
+      <PrivateRoute path="/view/:coinName?" component={View} />
       <PublicLayout>
         <Route path="/" exact component={Home} />
         <Route path="/about" exact component={About} />

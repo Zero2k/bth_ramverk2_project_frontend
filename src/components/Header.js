@@ -48,13 +48,13 @@ const options = [
   { key: 'sign-out', text: 'Sign Out', icon: 'sign out' }
 ];
 
-export default () => (
+export default ({ data: { name, symbol, price_usd, percent_change_24h } }) => (
   <Root>
     <Wrapper>
       <Box>
-        <CompanyName align="start">$Bitcoin</CompanyName>
+        <CompanyName align="start">{name} | <small>{symbol}</small></CompanyName>
         <SubHeader align="end">
-          <Icon link name="empty star" /> | <Icon link name="user" /> | <Icon link name="pin" />
+          Price: ${price_usd} | Change (24h): {percent_change_24h > 0 ? <span style={{ color: 'green' }}>{percent_change_24h}%</span> : <span style={{ color: 'red' }}>{percent_change_24h}%</span>}
         </SubHeader>
       </Box>
       <Box
