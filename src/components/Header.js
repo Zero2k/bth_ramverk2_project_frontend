@@ -48,7 +48,14 @@ const options = [
   { key: 'sign-out', text: 'Sign Out', icon: 'sign out' }
 ];
 
-export default ({ data: { name, symbol, price_usd, percent_change_24h } }) => (
+export default ({
+  data: {
+    name,
+    symbol,
+    price_usd,
+    percent_change_24h
+  }
+}) => (
   <Root>
     <Wrapper>
       <Box>

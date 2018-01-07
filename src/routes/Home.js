@@ -12,6 +12,7 @@ const Home = () => (
         style={{
           fontSize: '16px',
           fontWeight: 'normal',
+          textAlign: 'center',
           marginTop: '21em',
           color: 'black',
           padding: '25px',

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Grid } from 'semantic-ui-react';
 import styled from 'styled-components';
 
 import PublicNavbar from '../containers/PublicNavbar';
@@ -16,9 +15,7 @@ const PublicLayout = ({ children }) => (
   <Root>
     <Backround>
       <PublicNavbar />
-      <Grid textAlign="center" verticalAlign="middle">
-        <Grid.Column>{children}</Grid.Column>
-      </Grid>
+      {children}
     </Backround>
   </Root>
 );
