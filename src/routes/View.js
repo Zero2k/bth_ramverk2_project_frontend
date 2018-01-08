@@ -1,12 +1,12 @@
 import React from 'react';
-import { Dimmer, Loader, Segment } from 'semantic-ui-react';
+import { Dimmer, Loader } from 'semantic-ui-react';
 
 import { compose, graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import findIndex from 'lodash/findIndex';
 
 import AppLayout from '../components/AppLayout';
-import Coins from '../components/Coins';
+import Sidebar from '../containers/Sidebar';
 import Header from '../components/Header';
 import Messages from '../components/Messages';
 import SendMessage from '../components/SendMessage';
@@ -20,11 +20,9 @@ const View = ({
 }) => {
   if (loading || !topTenCoins) {
     return (
-      <Segment style={{ height: '100vh' }}>
-        <Dimmer active>
-          <Loader>Loading</Loader>
-        </Dimmer>
-      </Segment>
+      <Dimmer active>
+        <Loader>Loading</Loader>
+      </Dimmer>
     );
   }
 
@@ -36,21 +34,16 @@ const View = ({
 
   return (
     <AppLayout>
-      <Coins coins={tenCoins.map(coin => ({
-        id: coin.id,
-        symbol: coin.symbol,
-        image: coin.image.image_url
-        }))}
-      />
+      <Sidebar data={tenCoins} />
       <Header data={success ? coinData : currentCoin} />
       <Messages />
-      <SendMessage />
+      <SendMessage data={success ? coinData : currentCoin} />
     </AppLayout>
   );
 };
 
 const singleCoinQuery = gql`
-  query ($name: String!) {
+  query($name: String!) {
     coinByName(name: $name) {
       success
       data {
@@ -70,8 +63,8 @@ export default compose(
     name: 'singleCoinQuery',
     options: props => ({
       variables: {
-        name: props.match.params.coinName,
-      },
-    }),
+        name: props.match.params.coinName
+      }
+    })
   })
 )(View);

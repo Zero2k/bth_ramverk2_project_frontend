@@ -12,10 +12,12 @@ const Inputx = styled.div`
   margin: 20px;
 `;
 
-export default () => (
+const SendMessage = ({ data: { name } }) => (
   <Root>
     <Inputx>
-      <Input fluid placeholder="Talk about Bitcoin" icon={{ name: 'smile', link: true }} />
+      <Input fluid placeholder={`Talk about #${name}`} icon={{ name: 'smile', link: true }} />
     </Inputx>
   </Root>
 );
+
+export default SendMessage;

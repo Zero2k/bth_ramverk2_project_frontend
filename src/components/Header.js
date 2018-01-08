@@ -45,23 +45,33 @@ const trigger = (
 const options = [
   { key: 'user', text: 'Account', icon: 'user' },
   { key: 'settings', text: 'Settings', icon: 'settings' },
-  { key: 'sign-out', text: 'Sign Out', icon: 'sign out' }
+  {
+    key: 'sign-out',
+    text: 'Sign Out',
+    icon: 'sign out',
+    as: 'a',
+    href: '/logout'
+  }
 ];
 
-export default ({
+const Header = ({
   data: {
-    name,
-    symbol,
-    price_usd,
-    percent_change_24h
+    name, symbol, price_usd, percent_change_24h
   }
 }) => (
   <Root>
     <Wrapper>
       <Box>
-        <CompanyName align="start">{name} | <small>{symbol}</small></CompanyName>
+        <CompanyName align="start">
+          {name} | <small>{symbol}</small>
+        </CompanyName>
         <SubHeader align="end">
-          Price: ${price_usd} | Change (24h): {percent_change_24h > 0 ? <span style={{ color: 'green' }}>{percent_change_24h}%</span> : <span style={{ color: 'red' }}>{percent_change_24h}%</span>}
+          Price: ${price_usd} | Change (24h):{' '}
+          {percent_change_24h > 0 ? (
+            <span style={{ color: 'green' }}>{percent_change_24h}%</span>
+          ) : (
+            <span style={{ color: 'red' }}>{percent_change_24h}%</span>
+          )}
         </SubHeader>
       </Box>
       <Box
@@ -81,3 +91,5 @@ export default ({
     </Wrapper>
   </Root>
 );
+
+export default Header;

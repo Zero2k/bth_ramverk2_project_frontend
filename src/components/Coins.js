@@ -21,12 +21,12 @@ const CoinListItem = styled.li`
   height: 50px;
   width: 50px;
   background-image: url(${props => props.image});
-  background-color: ${props => props.color ? '#fff' : ''};
+  background-color: ${props => (props.color ? '#fff' : '')};
   background-repeat: no-repeat;
   background-size: contain;
   color: #fff;
   margin: auto;
-  margin-bottom: 10px;
+  margin-bottom: ${props => (props.margin ? '' : '10px')};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,18 +46,22 @@ const CoinListText = styled.div`
 
 const coin = ({ id, symbol, image }) => (
   <Link key={`team-${id}`} to={`/view/${id}`}>
-    <CoinListItem image={image} color='true' />
+    <CoinListItem image={image} color="true" />
     <CoinListText>{symbol}</CoinListText>
   </Link>
 );
 
-export default ({ coins }) => (
+const Coins = ({ coins, onCoinSeachClick }) => (
   <Root>
     <CoinList>
       {coins.map(coin)}
       <Link key="search-coin" to="/view/bitcoin">
-        <CoinListItem><Icon style={{ margin: '0' }} name='search' size='big' /></CoinListItem>
+        <CoinListItem onClick={onCoinSeachClick} margin>
+          <Icon style={{ margin: '0' }} name="search" size="big" />
+        </CoinListItem>
       </Link>
     </CoinList>
   </Root>
 );
+
+export default Coins;

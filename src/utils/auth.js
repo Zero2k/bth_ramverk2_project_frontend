@@ -1,6 +1,6 @@
 import decode from 'jwt-decode';
 
-const isAuthenticated = () => {
+export const isAuthenticated = () => {
   const token = localStorage.getItem('token');
   try {
     const checkToken = decode(token);
@@ -14,4 +14,6 @@ const isAuthenticated = () => {
   return true;
 };
 
-export default isAuthenticated;
+export const deleteToken = () => {
+  localStorage.removeItem('token');
+};

@@ -13,7 +13,7 @@ const Root = styled.div`
   overflow-y: auto;
 `;
 
-export default () => (
+const Messages = () => (
   <Root>
     <Comment.Group>
       <Comment>
@@ -34,3 +34,5 @@ export default () => (
     </Comment.Group>
   </Root>
 );
+
+export default Messages;
