@@ -8,8 +8,7 @@ class Sidebar extends React.Component {
     openCoinSearch: false
   };
 
-  toggleSearchCoinModal = (e) => {
-    e.preventDefault();
+  toggleSearchCoinModal = () => {
     this.setState(state => ({ openCoinSearch: !state.openCoinSearch }));
   };
 
