@@ -37,7 +37,7 @@ const View = ({
       <Sidebar data={tenCoins} />
       <Header data={success ? coinData : currentCoin} />
       <Messages />
-      <SendMessage data={success ? coinData : currentCoin} />
+      <SendMessage data={success ? coinData : currentCoin} coin={coinData.id} />
     </AppLayout>
   );
 };
