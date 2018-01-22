@@ -8,13 +8,13 @@ const Root = styled.div`
   grid-row: 1 / 4;
   background-color: #6435c9;
   color: #958993;
+  overflow-y: overlay;
 `;
 
 const CoinList = styled.ul`
   width: 100%;
   padding-left: 0px;
   list-style: none;
-  overflow: auto;
 `;
 
 const CoinListItem = styled.li`

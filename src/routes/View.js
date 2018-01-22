@@ -8,7 +8,7 @@ import findIndex from 'lodash/findIndex';
 import AppLayout from '../components/AppLayout';
 import Sidebar from '../containers/Sidebar';
 import Header from '../components/Header';
-import Messages from '../components/Messages';
+import Messages from '../containers/MessagesContainer';
 import SendMessage from '../components/SendMessage';
 
 import { coinQuery } from '../graphql/coins';
@@ -36,8 +36,11 @@ const View = ({
     <AppLayout>
       <Sidebar data={tenCoins} />
       <Header data={success ? coinData : currentCoin} />
-      <Messages />
-      <SendMessage data={success ? coinData : currentCoin} coin={coinData.id} />
+      <Messages coin={success ? coinData.id : currentCoin.id} />
+      <SendMessage
+        data={success ? coinData : currentCoin}
+        coin={success ? coinData.id : currentCoin.id}
+      />
     </AppLayout>
   );
 };
