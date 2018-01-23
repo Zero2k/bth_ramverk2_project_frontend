@@ -32,7 +32,7 @@ class Register extends React.Component {
       this.props.history.push('/login');
     } else {
       this.success = false;
-      this.props.history.push('/signup');
+      this.props.history.push('/sign-up');
     }
   };
 

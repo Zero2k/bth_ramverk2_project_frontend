@@ -1,9 +1,12 @@
 import React from 'react';
+import { withApollo } from 'react-apollo';
+import { ApolloClient } from 'apollo-client';
 import { deleteToken } from '../utils/auth';
 
 class Logout extends React.Component {
   componentDidMount() {
     deleteToken();
+    this.props.client.resetStore();
     this.props.history.push('/login');
   }
 
@@ -12,4 +15,4 @@ class Logout extends React.Component {
   }
 }
 
-export default Logout;
+export default withApollo(Logout);

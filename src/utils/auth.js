@@ -17,3 +17,13 @@ export const isAuthenticated = () => {
 export const deleteToken = () => {
   localStorage.removeItem('token');
 };
+
+export const getUser = () => {
+  const token = localStorage.getItem('token');
+  try {
+    const { user } = decode(token);
+    return user;
+  } catch (err) {
+    return null;
+  }
+};

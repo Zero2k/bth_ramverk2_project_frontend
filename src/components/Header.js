@@ -35,13 +35,6 @@ const SubHeader = styled.div`
   align-self: ${props => props.align};
 `;
 
-const trigger = (
-  <span>
-    <Image avatar src="https://react.semantic-ui.com/assets/images/avatar/small/molly.png" />
-    <span> Stevie Feliciano</span>
-  </span>
-);
-
 const options = [
   { key: 'user', text: 'Account', icon: 'user' },
   { key: 'settings', text: 'Settings', icon: 'settings' },
@@ -57,7 +50,7 @@ const options = [
 const Header = ({
   data: {
     name, symbol, price_usd, percent_change_24h
-  }
+  }, user
 }) => (
   <Root>
     <Wrapper>
@@ -86,7 +79,19 @@ const Header = ({
         <Input fluid icon="search" iconPosition="left" placeholder="Search" />
       </Box>
       <Box align="center" style={{ textAlign: 'left' }}>
-        <Dropdown trigger={trigger} options={options} pointing="top left" />
+        <Dropdown
+          trigger={
+            <span>
+              <Image
+                avatar
+                src="https://react.semantic-ui.com/assets/images/avatar/small/molly.png"
+              />
+              <span style={{ textTransform: 'capitalize' }}> {user}</span>
+            </span>
+          }
+          options={options}
+          pointing="top left"
+        />
       </Box>
     </Wrapper>
   </Root>

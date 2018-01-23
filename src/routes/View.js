@@ -11,6 +11,7 @@ import Header from '../components/Header';
 import Messages from '../containers/MessagesContainer';
 import SendMessage from '../components/SendMessage';
 
+import { getUser } from '../utils/auth';
 import { coinQuery } from '../graphql/coins';
 
 const View = ({
@@ -26,6 +27,8 @@ const View = ({
     );
   }
 
+  const { username } = getUser();
+
   const { data: tenCoins } = topTenCoins;
   const { data: coinData, success } = coinByName;
 
@@ -35,7 +38,7 @@ const View = ({
   return (
     <AppLayout>
       <Sidebar data={tenCoins} />
-      <Header data={success ? coinData : currentCoin} />
+      <Header data={success ? coinData : currentCoin} user={username} />
       <Messages coin={success ? coinData.id : currentCoin.id} />
       <SendMessage
         data={success ? coinData : currentCoin}
