@@ -15,6 +15,9 @@ You will need:
 4. yarn start - start the frontend
 ```
 
-## Further documentation
+# Further documentation
 
-Coming Soon...
+## Features
+
+- [ ] Real-time chat
+

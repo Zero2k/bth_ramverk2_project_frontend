@@ -7,7 +7,7 @@ import findIndex from 'lodash/findIndex';
 
 import AppLayout from '../components/AppLayout';
 import Sidebar from '../containers/Sidebar';
-import Header from '../components/Header';
+import Header from '../containers/HeaderContainer';
 import Messages from '../containers/MessagesContainer';
 import SendMessage from '../components/SendMessage';
 

@@ -14,6 +14,7 @@ const newMessageSubscription = gql`
       createdAt
       postedBy(limit: "single") {
         username
+        avatar
       }
     }
   }
@@ -49,7 +50,13 @@ class MessagesContainer extends React.Component {
         <Comment.Group style={{ paddingTop: '10px' }}>
           {getMessages.map(message => (
             <Comment key={`${message._id}-message`}>
-              <Comment.Avatar src="https://react.semantic-ui.com/assets/images/avatar/small/molly.png" />
+              <Comment.Avatar
+                src={
+                  message.postedBy.avatar
+                    ? message.postedBy.avatar
+                    : 'https://react.semantic-ui.com/assets/images/avatar/small/molly.png'
+                }
+              />
               <Comment.Content>
                 <Comment.Author style={{ textTransform: 'capitalize' }} as="a">
                   {message.postedBy.username}
@@ -80,6 +87,7 @@ const messagesQuery = gql`
       createdAt
       postedBy {
         username
+        avatar
       }
     }
   }

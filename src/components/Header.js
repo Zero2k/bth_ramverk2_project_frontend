@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Input, Icon, Image, Dropdown } from 'semantic-ui-react';
+import { Image, Dropdown } from 'semantic-ui-react';
 
 const Root = styled.div`
   grid-column: 3;
@@ -12,7 +12,8 @@ const Root = styled.div`
 const Wrapper = styled.div`
   display: grid;
   grid-gap: 15px;
-  grid-template-columns: minmax(200px, 1fr) 150px 240px 160px;
+  /* grid-template-columns: minmax(200px, 1fr) 150px 240px 160px; */
+  grid-template-columns: minmax(200px, 1fr) 160px;
   background-color: #fff;
   color: #444;
 `;
@@ -35,22 +36,10 @@ const SubHeader = styled.div`
   align-self: ${props => props.align};
 `;
 
-const options = [
-  { key: 'user', text: 'Account', icon: 'user' },
-  { key: 'settings', text: 'Settings', icon: 'settings' },
-  {
-    key: 'sign-out',
-    text: 'Sign Out',
-    icon: 'sign out',
-    as: 'a',
-    href: '/logout'
-  }
-];
-
 const Header = ({
   data: {
     name, symbol, price_usd, percent_change_24h
-  }, user
+  }, user, settings
 }) => (
   <Root>
     <Wrapper>
@@ -67,7 +56,7 @@ const Header = ({
           )}
         </SubHeader>
       </Box>
-      <Box
+      {/* <Box
         align="center"
         style={{ textAlign: 'center', display: 'flex', justifyContent: 'space-evenly' }}
       >
@@ -77,8 +66,8 @@ const Header = ({
       </Box>
       <Box align="center">
         <Input fluid icon="search" iconPosition="left" placeholder="Search" />
-      </Box>
-      <Box align="center" style={{ textAlign: 'left' }}>
+      </Box> */}
+      <Box align="center" style={{ textAlign: 'center' }}>
         <Dropdown
           trigger={
             <span>
@@ -89,7 +78,22 @@ const Header = ({
               <span style={{ textTransform: 'capitalize' }}> {user}</span>
             </span>
           }
-          options={options}
+          options={[
+            { key: 'user', text: 'Account', icon: 'user' },
+            {
+              key: 'settings',
+              text: 'Settings',
+              icon: 'settings',
+              onClick: settings
+            },
+            {
+              key: 'sign-out',
+              text: 'Sign Out',
+              icon: 'sign out',
+              as: 'a',
+              href: '/logout'
+            }
+          ]}
           pointing="top left"
         />
       </Box>
