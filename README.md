@@ -2,13 +2,13 @@
 
 ## Dependencies
 
-You will need:
- * [node.js](https://nodejs.org/en/)
- * [react.js](https://reactjs.org/)
+ * [Node.js](https://nodejs.org/en/)
+ * [React.js](https://reactjs.org/)
+ * [Apollo GraphQL - Client](https://www.apollographql.com/client)
 
-## To start the app
+## Follow these steps to start the frontend.
 ```bash
-- FRONTEND
+- GETTING STARTED
 1. git clone https://github.com/Zero2k/bth_ramverk2_project_frontend frontend
 2. cd frontend
 3. yarn - install dependencies
@@ -17,7 +17,15 @@ You will need:
 
 # Further documentation
 
+## About
+
 ## Features
 
-- [ ] Real-time chat
+- [✔] Login & Sign-up for users
+- [✔] Protected routes which require authentication to access
+- [✔] Real-time chat
+- [✔] Search cryptocurrencies with autocomplete
+- [✔] Easy access to ten of the largest cryptocurrencies
+- [✔] Change user settings
 
+## Technologies - React

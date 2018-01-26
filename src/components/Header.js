@@ -12,7 +12,6 @@ const Root = styled.div`
 const Wrapper = styled.div`
   display: grid;
   grid-gap: 15px;
-  /* grid-template-columns: minmax(200px, 1fr) 150px 240px 160px; */
   grid-template-columns: minmax(200px, 1fr) 160px;
   background-color: #fff;
   color: #444;
@@ -56,34 +55,36 @@ const Header = ({
           )}
         </SubHeader>
       </Box>
-      {/* <Box
-        align="center"
-        style={{ textAlign: 'center', display: 'flex', justifyContent: 'space-evenly' }}
-      >
-        <Icon link name="at" size="large" />
-        <Icon link name="empty star" size="large" />
-        <Icon link name="ellipsis vertical" size="large" />
-      </Box>
-      <Box align="center">
-        <Input fluid icon="search" iconPosition="left" placeholder="Search" />
-      </Box> */}
-      <Box align="center" style={{ textAlign: 'center' }}>
+      <Box align="center" style={{ textAlign: 'right', paddingRight: '5px' }}>
         <Dropdown
           trigger={
             <span>
               <Image
                 avatar
-                src="https://react.semantic-ui.com/assets/images/avatar/small/molly.png"
+                src={
+                  user.avatar
+                    ? user.avatar
+                    : 'https://react.semantic-ui.com/assets/images/avatar/small/molly.png'
+                }
               />
-              <span style={{ textTransform: 'capitalize' }}> {user}</span>
+              <span style={{ textTransform: 'capitalize' }}> {user.username}</span>
             </span>
           }
           options={[
-            { key: 'user', text: 'Account', icon: 'user' },
+            {
+              key: 'user',
+              text: (
+                <span style={{ textTransform: 'capitalize' }}>
+                  Signed in as <strong>{user.username}</strong>
+                </span>
+              ),
+              disabled: true
+            },
             {
               key: 'settings',
               text: 'Settings',
               icon: 'settings',
+              selected: false,
               onClick: settings
             },
             {
@@ -94,7 +95,7 @@ const Header = ({
               href: '/logout'
             }
           ]}
-          pointing="top left"
+          pointing="top right"
         />
       </Box>
     </Wrapper>

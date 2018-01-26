@@ -1,11 +1,21 @@
 import React from 'react';
-import { Form, Input, Button, Modal, TextArea } from 'semantic-ui-react';
+import { Form, Input, Button, Modal, TextArea, Dropdown } from 'semantic-ui-react';
 import { withFormik } from 'formik';
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 
+import { avatars } from '../utils/avatars';
+import { userQuery } from '../graphql/user';
+
 const SettingsModal = ({
-  open, onClose, values, handleChange, handleSubmit, isSubmitting
+  open,
+  onClose,
+  user,
+  values,
+  handleChange,
+  handleSubmit,
+  isSubmitting,
+  setFieldValue
 }) => (
   <Modal size="small" open={open} onClose={onClose}>
     <Modal.Header>Change Settings</Modal.Header>
@@ -21,24 +31,27 @@ const SettingsModal = ({
           <Form.Field
             control={Input}
             readOnly
-            /* defaultValue={} */
+            defaultValue={user.username}
             name="username"
             label="Username"
             placeholder="Username"
           />
           <Form.Field
-            control={Input}
-            onChange={handleChange}
-            value={values.avatar}
+            control={Dropdown}
+            onChange={(e, { name, value }) => setFieldValue(name, value)}
+            placeholder="Select avatar"
+            closeOnBlur={false}
             label="Avatar"
+            selection
+            defaultValue={user.avatar}
+            options={avatars}
             name="avatar"
-            placeholder="Avatar"
           />
         </Form.Group>
         <Form.Field
           control={TextArea}
           onChange={handleChange}
-          value={values.about}
+          defaultValue={user.about}
           label="About"
           name="about"
           placeholder="Tell us more about you..."
@@ -63,15 +76,30 @@ const updateUserMutation = gql`
 export default compose(
   graphql(updateUserMutation),
   withFormik({
-    mapPropsToValues: () => ({ avatar: '' }),
-    handleSubmit: async (values, { props: { mutate, onClose }, setSubmitting, resetForm }) => {
-      /* if (!values.username) {
+    handleSubmit: async (
+      values,
+      { props: { mutate, onClose, user }, setSubmitting, resetForm }
+    ) => {
+      if (!user.username) {
         setSubmitting(false);
         return;
-      } */
+      }
 
       await mutate({
-        variables: { avatar: values.avatar, about: values.about }
+        variables: { avatar: values.avatar, about: values.about },
+        update: (store, { data: { updateUser } }) => {
+          const { avatar, about } = updateUser;
+
+          const data = store.readQuery({ query: userQuery });
+          data.me = {
+            __typename: 'User',
+            _id: user._id,
+            username: user.username,
+            avatar,
+            about
+          };
+          store.writeQuery({ query: userQuery, data });
+        }
       });
       resetForm(false);
       onClose(true);

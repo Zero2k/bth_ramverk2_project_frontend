@@ -11,12 +11,13 @@ import Header from '../containers/HeaderContainer';
 import Messages from '../containers/MessagesContainer';
 import SendMessage from '../components/SendMessage';
 
-import { getUser } from '../utils/auth';
+import { userQuery } from '../graphql/user';
 import { coinQuery } from '../graphql/coins';
 
 const View = ({
   coinQuery: { loading, topTenCoins },
   singleCoinQuery: { coinByName },
+  userQuery: { me },
   match: { params: { coinName } }
 }) => {
   if (loading || !topTenCoins) {
@@ -27,7 +28,7 @@ const View = ({
     );
   }
 
-  const { username } = getUser();
+  /* const { username } = getUser(); */
 
   const { data: tenCoins } = topTenCoins;
   const { data: coinData, success } = coinByName;
@@ -38,7 +39,7 @@ const View = ({
   return (
     <AppLayout>
       <Sidebar data={tenCoins} />
-      <Header data={success ? coinData : currentCoin} user={username} />
+      <Header data={success ? coinData : currentCoin} user={me} />
       <Messages coin={success ? coinData.id : currentCoin.id} />
       <SendMessage
         data={success ? coinData : currentCoin}
@@ -65,6 +66,7 @@ const singleCoinQuery = gql`
 
 export default compose(
   graphql(coinQuery, { name: 'coinQuery', options: { fetchPolicy: 'cache-and-network' } }),
+  graphql(userQuery, { name: 'userQuery', options: { fetchPolicy: 'cache-and-network' } }),
   graphql(singleCoinQuery, {
     name: 'singleCoinQuery',
     options: props => ({

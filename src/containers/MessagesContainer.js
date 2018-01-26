@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import { Comment } from 'semantic-ui-react';
+import { Comment, Popup, Feed } from 'semantic-ui-react';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 
 import Messages from '../components/Messages';
@@ -15,6 +15,8 @@ const newMessageSubscription = gql`
       postedBy(limit: "single") {
         username
         avatar
+        about
+        createdAt
       }
     }
   }
@@ -45,24 +47,64 @@ class MessagesContainer extends React.Component {
 
   render() {
     const { data: { loading, getMessages } } = this.props;
+
     return loading ? null : (
       <Messages>
         <Comment.Group style={{ paddingTop: '10px' }}>
           {getMessages.map(message => (
             <Comment key={`${message._id}-message`}>
-              <Comment.Avatar
-                src={
-                  message.postedBy.avatar
-                    ? message.postedBy.avatar
-                    : 'https://react.semantic-ui.com/assets/images/avatar/small/molly.png'
+              <Popup
+                trigger={
+                  <Comment.Avatar
+                    src={
+                      message.postedBy.avatar
+                        ? message.postedBy.avatar
+                        : 'https://react.semantic-ui.com/assets/images/avatar/small/molly.png'
+                    }
+                  />
                 }
+                content={
+                  <Feed>
+                    <Feed.Event>
+                      <Feed.Label
+                        image={
+                          message.postedBy.avatar
+                            ? message.postedBy.avatar
+                            : 'https://react.semantic-ui.com/assets/images/avatar/small/molly.png'
+                        }
+                      />
+                      <Feed.Content>
+                        <Feed.Summary>
+                          <Feed.User style={{ textTransform: 'capitalize' }}>
+                            {message.postedBy.username}
+                          </Feed.User>{' '}
+                          joined
+                          <Feed.Date>
+                            {distanceInWordsToNow(message.postedBy.createdAt)} ago
+                          </Feed.Date>
+                        </Feed.Summary>
+                        <Feed.Extra text style={{ fontStyle: 'italic' }}>
+                          {message.postedBy.about}
+                        </Feed.Extra>
+                      </Feed.Content>
+                    </Feed.Event>
+                  </Feed>
+                }
+                position="right center"
+                style={{
+                  borderRadius: 0,
+                  opacity: 0.9,
+                  padding: '1em'
+                }}
+                wide="very"
+                on="hover"
               />
               <Comment.Content>
                 <Comment.Author style={{ textTransform: 'capitalize' }} as="a">
                   {message.postedBy.username}
                 </Comment.Author>
                 <Comment.Metadata>
-                  <div>{distanceInWordsToNow(message.createdAt)}</div>
+                  <div>{distanceInWordsToNow(message.createdAt)} ago</div>
                 </Comment.Metadata>
                 <Comment.Text>{message.text}</Comment.Text>
                 <Comment.Actions>
@@ -88,6 +130,8 @@ const messagesQuery = gql`
       postedBy {
         username
         avatar
+        about
+        createdAt
       }
     }
   }
