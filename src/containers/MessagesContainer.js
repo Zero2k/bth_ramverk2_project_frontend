@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import { Comment, Popup, Feed } from 'semantic-ui-react';
+import { Comment, Popup, Feed, Button } from 'semantic-ui-react';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 
 import Messages from '../components/Messages';
@@ -50,7 +50,30 @@ class MessagesContainer extends React.Component {
 
     return loading ? null : (
       <Messages>
-        <Comment.Group style={{ paddingTop: '10px' }}>
+        <Comment.Group style={{ paddingTop: '10px', maxWidth: '100%' }}>
+          <Button
+            style={{ width: '100%' }}
+            onClick={() => {
+              this.props.data.fetchMore({
+                variables: {
+                  coin: this.props.coin,
+                  offset: this.props.data.getMessages.length
+                },
+                updateQuery: (prev, { fetchMoreResult }) => {
+                  if (!fetchMoreResult) {
+                    return prev;
+                  }
+
+                  return {
+                    ...prev,
+                    getMessages: [...prev.getMessages, ...fetchMoreResult.getMessages]
+                  };
+                }
+              });
+            }}
+          >
+            Load More
+          </Button>
           {getMessages.map(message => (
             <Comment key={`${message._id}-message`}>
               <Popup
@@ -122,8 +145,8 @@ class MessagesContainer extends React.Component {
 }
 
 const messagesQuery = gql`
-  query($coin: String!) {
-    getMessages(coin: $coin) {
+  query($offset: Int!, $coin: String!) {
+    getMessages(offset: $offset, coin: $coin) {
       _id
       text
       createdAt
@@ -141,7 +164,8 @@ export default graphql(messagesQuery, {
   options: props => ({
     fetchPolicy: 'network-only',
     variables: {
-      coin: props.coin
+      coin: props.coin,
+      offset: 0
     }
   })
 })(MessagesContainer);
