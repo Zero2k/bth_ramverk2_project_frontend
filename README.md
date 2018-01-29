@@ -26,6 +26,8 @@
 - [✔] Real-time chat
 - [✔] Search cryptocurrencies with autocomplete
 - [✔] Easy access to ten of the largest cryptocurrencies
+- [✔] Market data for cryptocurrencies such as price and price changes
 - [✔] Change user settings
+- [✔] Pagination with infinite scroll
 
 ## Technologies - React

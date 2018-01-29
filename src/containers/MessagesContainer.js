@@ -1,10 +1,8 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import { Comment, Popup, Feed, Button } from 'semantic-ui-react';
+import { Comment, Popup, Feed } from 'semantic-ui-react';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
-
-import Messages from '../components/Messages';
 
 const newMessageSubscription = gql`
   subscription($coin: String!) {
@@ -23,6 +21,10 @@ const newMessageSubscription = gql`
 `;
 
 class MessagesContainer extends React.Component {
+  state = {
+    loadMoreItem: true
+  };
+
   componentWillReceiveProps({ coin }) {
     this.props.data.subscribeToMore({
       document: newMessageSubscription,
@@ -36,110 +38,142 @@ class MessagesContainer extends React.Component {
         const newMessage = subscriptionData.data.newCoinMessage;
         /* Prevent it from adding multiple messages */
         if (!prev.getMessages.find(msg => msg._id === newMessage._id)) {
-          return Object.assign({}, prev, {
-            getMessages: [...prev.getMessages, subscriptionData.data.newCoinMessage]
-          });
+          return {
+            ...prev,
+            getMessages: [subscriptionData.data.newCoinMessage, ...prev.getMessages]
+          };
         }
         return prev;
       }
     });
+
+    /* Check if coin (page) changes and reset state */
+    if (coin !== this.props.coin) {
+      this.setState({ loadMoreItem: true });
+    }
   }
+
+  infiniteScroll = () => {
+    const { data: { getMessages, fetchMore }, coin } = this.props;
+    if (this.scroller && this.state.loadMoreItem && this.scroller.scrollTop < 100) {
+      fetchMore({
+        variables: {
+          coin,
+          offset: getMessages.length
+        },
+        updateQuery: (prev, { fetchMoreResult }) => {
+          if (!fetchMoreResult) {
+            return prev;
+          }
+
+          if (fetchMoreResult.getMessages.length < 15) {
+            this.setState({ loadMoreItem: false });
+          }
+
+          const newEntries = fetchMoreResult.getMessages;
+          if (!prev.getMessages.find(msg => msg._id === newEntries._id)) {
+            return {
+              ...prev,
+              getMessages: [...prev.getMessages, ...fetchMoreResult.getMessages]
+            };
+          }
+          return prev;
+        }
+      });
+    }
+  };
 
   render() {
     const { data: { loading, getMessages } } = this.props;
 
-    return loading ? null : (
-      <Messages>
+    return loading || !getMessages ? null : (
+      <div
+        style={{
+          gridColumn: '3',
+          gridRow: '2',
+          backgroundColor: '#fff',
+          paddingTop: '10px',
+          paddingLeft: '20px',
+          paddingRight: '20px',
+          display: 'flex',
+          flexDirection: 'column-reverse',
+          overflowY: 'auto'
+        }}
+        onScroll={this.infiniteScroll}
+        ref={(scroller) => {
+          this.scroller = scroller;
+        }}
+      >
         <Comment.Group style={{ paddingTop: '10px', maxWidth: '100%' }}>
-          <Button
-            style={{ width: '100%' }}
-            onClick={() => {
-              this.props.data.fetchMore({
-                variables: {
-                  coin: this.props.coin,
-                  offset: this.props.data.getMessages.length
-                },
-                updateQuery: (prev, { fetchMoreResult }) => {
-                  if (!fetchMoreResult) {
-                    return prev;
+          {getMessages
+            .slice()
+            .reverse()
+            .map(message => (
+              <Comment key={`${message._id}-message`}>
+                <Popup
+                  trigger={
+                    <Comment.Avatar
+                      src={
+                        message.postedBy.avatar
+                          ? message.postedBy.avatar
+                          : 'https://react.semantic-ui.com/assets/images/avatar/small/molly.png'
+                      }
+                    />
                   }
-
-                  return {
-                    ...prev,
-                    getMessages: [...prev.getMessages, ...fetchMoreResult.getMessages]
-                  };
-                }
-              });
-            }}
-          >
-            Load More
-          </Button>
-          {getMessages.map(message => (
-            <Comment key={`${message._id}-message`}>
-              <Popup
-                trigger={
-                  <Comment.Avatar
-                    src={
-                      message.postedBy.avatar
-                        ? message.postedBy.avatar
-                        : 'https://react.semantic-ui.com/assets/images/avatar/small/molly.png'
-                    }
-                  />
-                }
-                content={
-                  <Feed>
-                    <Feed.Event>
-                      <Feed.Label
-                        image={
-                          message.postedBy.avatar
-                            ? message.postedBy.avatar
-                            : 'https://react.semantic-ui.com/assets/images/avatar/small/molly.png'
-                        }
-                      />
-                      <Feed.Content>
-                        <Feed.Summary>
-                          <Feed.User style={{ textTransform: 'capitalize' }}>
-                            {message.postedBy.username}
-                          </Feed.User>{' '}
-                          joined
-                          <Feed.Date>
-                            {distanceInWordsToNow(message.postedBy.createdAt)} ago
-                          </Feed.Date>
-                        </Feed.Summary>
-                        <Feed.Extra text style={{ fontStyle: 'italic' }}>
-                          {message.postedBy.about}
-                        </Feed.Extra>
-                      </Feed.Content>
-                    </Feed.Event>
-                  </Feed>
-                }
-                position="right center"
-                style={{
-                  borderRadius: 0,
-                  opacity: 0.9,
-                  padding: '1em'
-                }}
-                wide="very"
-                on="hover"
-              />
-              <Comment.Content>
-                <Comment.Author style={{ textTransform: 'capitalize' }} as="a">
-                  {message.postedBy.username}
-                </Comment.Author>
-                <Comment.Metadata>
-                  <div>{distanceInWordsToNow(message.createdAt)} ago</div>
-                </Comment.Metadata>
-                <Comment.Text>{message.text}</Comment.Text>
-                <Comment.Actions>
-                  <Comment.Action active>Reply</Comment.Action>
-                  <Comment.Action active>Share</Comment.Action>
-                  <Comment.Action active>Like</Comment.Action>
-                </Comment.Actions>
-              </Comment.Content>
-            </Comment>
-          ))}
+                  content={
+                    <Feed>
+                      <Feed.Event>
+                        <Feed.Label
+                          image={
+                            message.postedBy.avatar
+                              ? message.postedBy.avatar
+                              : 'https://react.semantic-ui.com/assets/images/avatar/small/molly.png'
+                          }
+                        />
+                        <Feed.Content>
+                          <Feed.Summary>
+                            <Feed.User style={{ textTransform: 'capitalize' }}>
+                              {message.postedBy.username}
+                            </Feed.User>{' '}
+                            joined
+                            <Feed.Date>
+                              {distanceInWordsToNow(message.postedBy.createdAt)} ago
+                            </Feed.Date>
+                          </Feed.Summary>
+                          <Feed.Extra text style={{ fontStyle: 'italic' }}>
+                            {message.postedBy.about}
+                          </Feed.Extra>
+                        </Feed.Content>
+                      </Feed.Event>
+                    </Feed>
+                  }
+                  position="right center"
+                  style={{
+                    borderRadius: 0,
+                    opacity: 0.9,
+                    padding: '1em'
+                  }}
+                  wide="very"
+                  on="hover"
+                />
+                <Comment.Content>
+                  <Comment.Author style={{ textTransform: 'capitalize' }} as="a">
+                    {message.postedBy.username}
+                  </Comment.Author>
+                  <Comment.Metadata>
+                    <div>{distanceInWordsToNow(message.createdAt)} ago</div>
+                  </Comment.Metadata>
+                  <Comment.Text>{message.text}</Comment.Text>
+                  <Comment.Actions>
+                    <Comment.Action active>Reply</Comment.Action>
+                    <Comment.Action active>Share</Comment.Action>
+                    <Comment.Action active>Like</Comment.Action>
+                  </Comment.Actions>
+                </Comment.Content>
+              </Comment>
+            ))}
         </Comment.Group>
-      </Messages>
+      </div>
     );
   }
 }
