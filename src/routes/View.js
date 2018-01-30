@@ -28,8 +28,6 @@ const View = ({
     );
   }
 
-  /* const { username } = getUser(); */
-
   const { data: tenCoins } = topTenCoins;
   const { data: coinData, success } = coinByName;
 

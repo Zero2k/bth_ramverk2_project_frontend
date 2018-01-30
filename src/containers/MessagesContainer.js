@@ -22,10 +22,11 @@ const newMessageSubscription = gql`
 
 class MessagesContainer extends React.Component {
   state = {
-    loadMoreItem: true
+    loadMoreItem: true,
+    avatar: 'https://react.semantic-ui.com/assets/images/avatar/small/molly.png'
   };
 
-  componentWillReceiveProps({ coin }) {
+  componentWillReceiveProps({ data: { getMessages }, coin }) {
     this.props.data.subscribeToMore({
       document: newMessageSubscription,
       variables: {
@@ -40,7 +41,10 @@ class MessagesContainer extends React.Component {
         if (!prev.getMessages.find(msg => msg._id === newMessage._id)) {
           return {
             ...prev,
-            getMessages: [subscriptionData.data.newCoinMessage, ...prev.getMessages]
+            getMessages: [
+              subscriptionData.data.newCoinMessage,
+              ...prev.getMessages
+            ]
           };
         }
         return prev;
@@ -51,11 +55,29 @@ class MessagesContainer extends React.Component {
     if (coin !== this.props.coin) {
       this.setState({ loadMoreItem: true });
     }
+
+    /* Keep current position when scrolling and new messages is being loaded */
+    if (
+      this.scroller &&
+      this.props.data.getMessages &&
+      getMessages &&
+      this.scroller.scrollTop < 100 &&
+      this.props.data.getMessages.length !== getMessages.length
+    ) {
+      const chatHeight = this.scroller.scrollHeight;
+      setTimeout(() => {
+        this.scroller.scrollTop = this.scroller.scrollHeight - chatHeight;
+      }, 125);
+    }
   }
 
   infiniteScroll = () => {
     const { data: { getMessages, fetchMore }, coin } = this.props;
-    if (this.scroller && this.state.loadMoreItem && this.scroller.scrollTop < 100) {
+    if (
+      this.scroller &&
+      this.state.loadMoreItem &&
+      this.scroller.scrollTop < 100
+    ) {
       fetchMore({
         variables: {
           coin,
@@ -74,7 +96,10 @@ class MessagesContainer extends React.Component {
           if (!prev.getMessages.find(msg => msg._id === newEntries._id)) {
             return {
               ...prev,
-              getMessages: [...prev.getMessages, ...fetchMoreResult.getMessages]
+              getMessages: [
+                ...prev.getMessages,
+                ...fetchMoreResult.getMessages.filter(n => !prev.getMessages.some(p => p._id === n._id))
+              ]
             };
           }
           return prev;
@@ -116,7 +141,7 @@ class MessagesContainer extends React.Component {
                       src={
                         message.postedBy.avatar
                           ? message.postedBy.avatar
-                          : 'https://react.semantic-ui.com/assets/images/avatar/small/molly.png'
+                          : this.state.avatar
                       }
                     />
                   }
@@ -127,7 +152,7 @@ class MessagesContainer extends React.Component {
                           image={
                             message.postedBy.avatar
                               ? message.postedBy.avatar
-                              : 'https://react.semantic-ui.com/assets/images/avatar/small/molly.png'
+                              : this.state.avatar
                           }
                         />
                         <Feed.Content>
@@ -137,7 +162,8 @@ class MessagesContainer extends React.Component {
                             </Feed.User>{' '}
                             joined
                             <Feed.Date>
-                              {distanceInWordsToNow(message.postedBy.createdAt)} ago
+                              {distanceInWordsToNow(message.postedBy.createdAt)}{' '}
+                              ago
                             </Feed.Date>
                           </Feed.Summary>
                           <Feed.Extra text style={{ fontStyle: 'italic' }}>
@@ -157,7 +183,10 @@ class MessagesContainer extends React.Component {
                   on="hover"
                 />
                 <Comment.Content>
-                  <Comment.Author style={{ textTransform: 'capitalize' }} as="a">
+                  <Comment.Author
+                    style={{ textTransform: 'capitalize' }}
+                    as="a"
+                  >
                     {message.postedBy.username}
                   </Comment.Author>
                   <Comment.Metadata>
