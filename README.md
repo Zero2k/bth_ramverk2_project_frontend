@@ -17,17 +17,19 @@
 
 # Further documentation
 
+![Alt text](screenshots/screenshot_alt1.png)
+
 ## About
 
 ## Features
 
-- [✔] Login & Sign-up for users
-- [✔] Protected routes which require authentication to access
-- [✔] Real-time chat
-- [✔] Search cryptocurrencies with autocomplete
-- [✔] Easy access to ten of the largest cryptocurrencies
-- [✔] Market data for cryptocurrencies such as price and price changes
-- [✔] Change user settings
-- [✔] Pagination with infinite scroll
+[✔] Login & Sign-up for users  
+[✔] Protected routes which require authentication to access  
+[✔] Real-time chat  
+[✔] Search cryptocurrencies with autocomplete  
+[✔] Easy access to ten of the largest cryptocurrencies  
+[✔] Market data for cryptocurrencies such as price and price changes  
+[✔] Change user settings  
+[✔] Pagination with infinite scroll
 
 ## Technologies - React

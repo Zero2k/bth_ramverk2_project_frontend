@@ -208,7 +208,7 @@ class MessagesContainer extends React.Component {
 }
 
 const messagesQuery = gql`
-  query($offset: Int!, $coin: String!) {
+  query($offset: Int, $coin: String!) {
     getMessages(offset: $offset, coin: $coin) {
       _id
       text
