@@ -21,6 +21,8 @@
 
 ## About
 
+This repo is part of a school project at Blekinge Institute of Technology and it contains the front-end for my examination assignment in the course Ramverk2. In short, the task is to create a service / application where we use techniques that we have tested / learned in the course, we was free to choose any modern front-end technology we like, so i decided to use React.js for this project. Learn more about my backend built with Node.js, Express.js, GraphQL and MongoDB [here](https://github.com/Zero2k/bth_ramverk2_project_backend). 
+
 ## Features
 
 [✔] Login & Sign-up for users  
