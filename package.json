@@ -32,7 +32,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start:production": "pm2 start npm -- start",
+    "start:production": "pm2 start npm -- serve",
+    "serve": "PORT=3000 serve -s build",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
