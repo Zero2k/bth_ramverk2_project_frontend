@@ -23,7 +23,7 @@ const Box = styled.div`
   justify-items: stretch;
 `;
 
-const CompanyName = styled.div`
+const CoinName = styled.div`
   font-size: 20px;
   font-weight: 600;
   align-self: ${props => props.align};
@@ -38,14 +38,16 @@ const SubHeader = styled.div`
 const Header = ({
   data: {
     name, symbol, price_usd, percent_change_24h
-  }, user, settings
+  },
+  user,
+  settings
 }) => (
   <Root>
     <Wrapper>
       <Box>
-        <CompanyName align="start">
+        <CoinName align="start">
           {name} | <small>{symbol}</small>
-        </CompanyName>
+        </CoinName>
         <SubHeader align="end">
           Price: ${price_usd} | Change (24h):{' '}
           {percent_change_24h > 0 ? (
@@ -67,7 +69,13 @@ const Header = ({
                     : 'https://react.semantic-ui.com/assets/images/avatar/small/molly.png'
                 }
               />
-              <span style={{ textTransform: 'capitalize' }}> {user.username}</span>
+              <span
+                className="username"
+                style={{ textTransform: 'capitalize' }}
+              >
+                {' '}
+                {user.username}
+              </span>
             </span>
           }
           options={[

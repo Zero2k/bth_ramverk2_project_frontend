@@ -1,6 +1,5 @@
 import React from 'react';
 import { withApollo } from 'react-apollo';
-import { ApolloClient } from 'apollo-client';
 import { deleteToken } from '../utils/auth';
 
 class Logout extends React.Component {

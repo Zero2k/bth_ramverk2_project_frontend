@@ -1,0 +1,19 @@
+checks:
+    javascript: true
+
+build:
+    tests:
+        override:
+            -
+                command: 'yarn test'
+                coverage:
+                    file: 'coverage/clover.xml'
+                    format: 'clover'
+
+filter:
+    excluded_paths:
+        - "coverage"
+        - "build"
+        - "node_modules"
+        - "tests"
+        - "src/registerServiceWorker.js"

@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/components/Coins.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">src/components</a> Coins.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/21</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/6</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/16</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React <span class="cstat-no" title="statement not covered" >from 'react';<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ></span></span></span></span>
+import { Icon } from 's<span class="cstat-no" title="statement not covered" >emantic-ui-react';</span>
+import styled from 'styl<span class="cstat-no" title="statement not covered" >ed-components';<span class="cstat-no" title="statement not covered" ></span></span>
+import { Link } from '<span class="cstat-no" title="statement not covered" >react-router-dom';<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span>
+&nbsp;
+const Root = <span class="cstat-no" title="statement not covered" >styled.div`</span>
+  grid-column: 1;
+  grid-row: 1 / 4;
+  background-color: #6435c9;
+  color: #958993;
+  overflow-y: overlay;
+`;
+&nbsp;
+const CoinList = <span class="cstat-no" title="statement not covered" >styled.ul`</span>
+  width: 100%;
+  padding-left: 0px;
+  list-style: none;
+`;
+&nbsp;
+const CoinListItem = <span class="cstat-no" title="statement not covered" >styled.li`</span>
+  height: 50px;
+  width: 50px;
+  background-image: url(${<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; <span class="cstat-no" title="statement not covered" >props.image}</span>);
+  background-color: ${<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; <span class="cstat-no" title="statement not covered" >(props.color ? '#fff' : ''</span>)};
+  background-repeat: no-repeat;
+  background-size: contain;
+  color: #fff;
+  margin: auto;
+  margin-bottom: ${<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; <span class="cstat-no" title="statement not covered" >(props.margin ? '' : '10px'</span>)};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  &amp;:hover {
+    border-style: solid;
+    border-width: thin;
+  }
+`;
+&nbsp;
+const CoinListText = <span class="cstat-no" title="statement not covered" >styled.div`</span>
+  text-align: center;
+  font-size: 16px;
+  padding-bottom: 12px;
+  color: #fff;
+`;
+&nbsp;
+const coin = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span> id, symbol, image }) =&gt; (</span>
+<span class="cstat-no" title="statement not covered" >  &lt;Link key={`team-${id}`} to={`/view/${id}`}&gt;</span>
+    &lt;CoinListItem image={image} color="true" /&gt;
+    &lt;CoinListText&gt;{symbol}&lt;/CoinListText&gt;
+  &lt;/Link&gt;
+);
+&nbsp;
+const Coins = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span> coins, onCoinSeachClick }) =&gt; (</span>
+<span class="cstat-no" title="statement not covered" >  &lt;Root&gt;</span>
+    &lt;CoinList&gt;
+      {coins.map(coin)}
+      &lt;Link key="search-coin" to="/view/bitcoin"&gt;
+        &lt;CoinListItem onClick={onCoinSeachClick} margin&gt;
+          &lt;Icon style={{ margin: '0' }} name="search" size="big" /&gt;<span class="cstat-no" title="statement not covered" ></span>
+        &lt;/CoinListItem&gt;
+      &lt;/Link&gt;
+    &lt;/CoinList&gt;
+  &lt;/Root&gt;
+);
+&nbsp;
+export default Coins;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Feb 16 2018 17:46:47 GMT+0100 (CET)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

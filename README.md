@@ -2,6 +2,9 @@
 
 [![Build Status](https://travis-ci.org/Zero2k/bth_ramverk2_project_frontend.svg?branch=master)](https://travis-ci.org/Zero2k/bth_ramverk2_project_frontend)
 [![BCH compliance](https://bettercodehub.com/edge/badge/Zero2k/bth_ramverk2_project_frontend?branch=master)](https://bettercodehub.com/)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Zero2k/bth_ramverk2_project_frontend/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Zero2k/bth_ramverk2_project_frontend/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/Zero2k/bth_ramverk2_project_frontend/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Zero2k/bth_ramverk2_project_frontend/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/Zero2k/bth_ramverk2_project_frontend/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Zero2k/bth_ramverk2_project_frontend/build-status/master)
 
 ## Dependencies
 
@@ -39,7 +42,7 @@ This repo is part of a school project at Blekinge Institute of Technology and it
 
 ## Technologies - React
 
-#TODO
+I decided to use React for my front-end and here is how i structured it. First of all, the front-end was bootstrapped with Create React App in order to get a good foundation to start with. In addition, it accelerates the development process since i don't have to install a lot of packages manually and create all the files needed.
 
 ## How to deploy the app to DigitalOcean
 

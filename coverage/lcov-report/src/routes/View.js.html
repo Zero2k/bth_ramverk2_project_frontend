@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/routes/View.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">src/routes</a> View.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/34</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/20</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/3</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/23</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React <span class="cstat-no" title="statement not covered" >from 'react';<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ></span></span></span></span>
+import { Dimmer, Loader<span class="cstat-no" title="statement not covered" > } from 'semantic-ui-react';</span>
+&nbsp;
+import { compose, g<span class="cstat-no" title="statement not covered" >raphql } from 'react-apo</span>llo';
+import gql from 'g<span class="cstat-no" title="statement not covered" >raphql-tag';<span class="cstat-no" title="statement not covered" ></span></span>
+import findIndex <span class="cstat-no" title="statement not covered" >from 'lodash/findIndex';<span class="cstat-no" title="statement not covered" ></span></span>
+&nbsp;
+import AppLayout <span class="cstat-no" title="statement not covered" >from '../components/AppLayout';<span class="cstat-no" title="statement not covered" ></span></span>
+import Sidebar <span class="cstat-no" title="statement not covered" >from '../containers/Sidebar';<span class="cstat-no" title="statement not covered" ></span></span>
+import Header from '../<span class="cstat-no" title="statement not covered" >containers/HeaderContainer';<span class="cstat-no" title="statement not covered" ></span></span>
+import Messages from '../<span class="cstat-no" title="statement not covered" >containers/MessagesContainer';<span class="cstat-no" title="statement not covered" ></span></span>
+import SendMessage <span class="cstat-no" title="statement not covered" >from '../components/SendMessage';<span class="cstat-no" title="statement not covered" ></span></span>
+&nbsp;
+import { use<span class="cstat-no" title="statement not covered" >rQuery } from '../graphql/u</span>ser';
+import { coin<span class="cstat-no" title="statement not covered" >Query } from '../graphql/coi</span>ns';<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span>
+&nbsp;
+const View = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span></span>
+  coinQuery: { loading, topTenCoins },
+  singleCoinQuery: { coinByName },
+  userQuery: { me },
+  match: { params: { coinName } }
+}) =&gt; {
+<span class="cstat-no" title="statement not covered" >  if (loading || !topTenCoins) {</span>
+<span class="cstat-no" title="statement not covered" >    return (</span>
+      &lt;Dimmer active&gt;
+        &lt;Loader&gt;Loading&lt;/Loader&gt;
+      &lt;/Dimmer&gt;
+    );
+  }
+&nbsp;
+  const { data: tenCoins } = <span class="cstat-no" title="statement not covered" >topTenCoins;</span>
+  const { data: coinData, success } = <span class="cstat-no" title="statement not covered" >coinByName;</span>
+&nbsp;
+  const coinId = <span class="cstat-no" title="statement not covered" >coinName ? findIndex(tenCoins, ['id', coinName]) : 0;</span>
+  const currentCoin = <span class="cstat-no" title="statement not covered" >coinId === -1 ? tenCoins[0] : tenCoins[coinId];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return (</span>
+    &lt;AppLayout&gt;
+      &lt;Sidebar data={tenCoins} /&gt;
+      &lt;Header data={success ? coinData : currentCoin} user={me} /&gt;
+      &lt;Messages coin={success ? coinData.id : currentCoin.id} /&gt;
+      &lt;SendMessage
+        data={success ? coinData : currentCoin}
+        coin={success ? coinData.id : currentCoin.id}
+      /&gt;
+    &lt;/AppLayout&gt;
+  );
+};
+&nbsp;
+const singleCoinQuery = <span class="cstat-no" title="statement not covered" >gql`</span>
+  query($name: String!) {
+    coinByName(name: $name) {
+      success
+      data {
+        id
+        name
+        symbol
+        price_usd
+        percent_change_24h
+      }
+    }
+  }
+`;<span class="cstat-no" title="statement not covered" ></span>
+&nbsp;
+export default compose(
+  graphql(coinQuery, { name: 'coinQuery', options: { fetchPolicy: 'cache-and-network' } }),
+  graphql(userQuery, { name: 'userQuery', options: { fetchPolicy: 'cache-and-network' } }),
+  graphql(singleCoinQuery, {
+    name: 'singleCoinQuery',
+    options<span class="fstat-no" title="function not covered" >: </span>props =&gt;<span class="cstat-no" title="statement not covered" > ({</span>
+      variables: {
+        name: props.match.params.coinName
+      }
+    })
+  })
+)(View);
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Feb 16 2018 17:46:47 GMT+0100 (CET)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
