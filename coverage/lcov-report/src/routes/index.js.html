@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/36</span>
+        <span class='fraction'>2/4</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/10</span>
+        <span class='fraction'>0/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">33.33% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/5</span>
+        <span class='fraction'>1/3</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/14</span>
+        <span class='fraction'>2/4</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -87,35 +87,21 @@
 42
 43
 44
-45</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+45</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -131,29 +117,43 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React <span class="cstat-no" title="statement not covered" >from 'react';<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ></span></span></span></span>
-import { BrowserRouter<span class="cstat-no" title="statement not covered" > as Router, Route, Switch, R</span>edirect } from 'react-router-dom';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 &nbsp;
-import { isA<span class="cstat-no" title="statement not covered" >uthenticated } from '../u</span>tils/auth';
+import { isAuthenticated } from '../utils/auth';
 &nbsp;
-import PublicLayout <span class="cstat-no" title="statement not covered" >from './PublicLayout';<span class="cstat-no" title="statement not covered" ></span></span>
-import Home <span class="cstat-no" title="statement not covered" >from './Home';<span class="cstat-no" title="statement not covered" ></span></span>
-import About <span class="cstat-no" title="statement not covered" >from './About';<span class="cstat-no" title="statement not covered" ></span></span>
-import View <span class="cstat-no" title="statement not covered" >from './View';<span class="cstat-no" title="statement not covered" ></span></span>
-import Login <span class="cstat-no" title="statement not covered" >from './Login';<span class="cstat-no" title="statement not covered" ></span></span>
-import Logout <span class="cstat-no" title="statement not covered" >from './Logout';<span class="cstat-no" title="statement not covered" ></span></span>
-import Signup <span class="cstat-no" title="statement not covered" >from './Signup';<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" ></span></span></span></span></span></span></span></span></span></span></span></span></span>
+import PublicLayout from './PublicLayout';
+import Home from './Home';
+import About from './About';
+import View from './View';
+import Login from './Login';
+import Logout from './Logout';
+import Signup from './Signup';
 &nbsp;
-const PrivateRoute = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span> component: Component, ...rest }) =&gt; (<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ></span></span></span></span>
-  &lt;Route
+const PrivateRoute = <span class="fstat-no" title="function not covered" >({</span> component: Component, ...rest }) =&gt; (
+<span class="cstat-no" title="statement not covered" >  &lt;Route</span>
     {...rest}
-    render={pr<span class="fstat-no" title="function not covered" >op</span>s =&gt;
-<span class="cstat-no" title="statement not covered" >      (isAuthenticated() ? (</span>
+    render={<span class="fstat-no" title="function not covered" >pr</span>ops =&gt;
+      (<span class="cstat-no" title="statement not covered" >isAuthenticated() ? (</span>
         &lt;Component {...props} /&gt;
       ) : (
         &lt;Redirect
           to={{
-            pathname: '/login'<span class="cstat-no" title="statement not covered" ></span>
+            pathname: '/login'
           }}
         /&gt;
       ))
@@ -161,8 +161,8 @@ const PrivateRoute = <span class="cstat-no" title="statement not covered" ><span
   /&gt;
 );
 &nbsp;
-<span class="fstat-no" title="function not covered" >ex</span>port default () =&gt; (
-<span class="cstat-no" title="statement not covered" >  &lt;Router&gt;</span>
+export default () =&gt; (
+  &lt;Router&gt;
     &lt;Switch&gt;
       &lt;PrivateRoute path="/view/:coinName?" component={View} /&gt;
       &lt;PrivateRoute path="/logout" exact component={Logout} /&gt;
@@ -181,7 +181,7 @@ const PrivateRoute = <span class="cstat-no" title="statement not covered" ><span
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Feb 16 2018 17:46:47 GMT+0100 (CET)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Feb 17 2018 13:47:54 GMT+0100 (CET)
 </div>
 </div>
 <script src="../../prettify.js"></script>
